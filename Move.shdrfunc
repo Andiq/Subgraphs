@@ -1,0 +1,110 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/move.shdrfunc",
+  "Model": null,
+  "Title": "Move",
+  "Description": "",
+  "Category": "Supgrahps",
+  "Icon": "3d_rotation",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "10462c48-8e89-4b31-b730-0bfcf6e5d642",
+          "Name": "UVRAW",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        },
+        {
+          "Id": "a0df6358-c09b-40c2-8c59-987471934730",
+          "Name": "UVRepeat",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        }
+      ],
+      "Identifier": "0",
+      "Position": "324,-108",
+      "HandleOffsets": {},
+      "UVRAW": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "UVRepeat": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "UV",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "1",
+      "Position": "-768,120",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Move",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "2",
+      "Position": "-756,-96",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Add",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "3",
+      "Position": "-312,-96",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Frac",
+      "Identifier": "4",
+      "Position": "0,-24",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    }
+  ]
+}

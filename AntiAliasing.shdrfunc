@@ -1,0 +1,177 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/anitaliasing.shdrfunc",
+  "Model": null,
+  "Title": "AntiAliasing",
+  "Description": "",
+  "Category": "Subgraphs",
+  "Icon": "camera_alt",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "d8a49cb2-5ad9-42ca-9f69-d79aad010bc8",
+          "Name": "Out",
+          "Type": "float",
+          "Preview": "None",
+          "Priority": 0
+        }
+      ],
+      "Identifier": "0",
+      "Position": "1152,-84",
+      "HandleOffsets": {},
+      "Out": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Gradient",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "1",
+      "Position": "-528,24",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "CutOff",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 0.5,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 2,
+      "Identifier": "2",
+      "Position": "-528,-120",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "3",
+      "Position": "-276,-24",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "DDX",
+      "Precision": "Standard",
+      "Identifier": "4",
+      "Position": "-60,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "DDY",
+      "Precision": "Standard",
+      "Identifier": "5",
+      "Position": "-60,144",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "6",
+      "Position": "132,108",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "4",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Length",
+      "Identifier": "7",
+      "Position": "396,144",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "8",
+      "Position": "552,-24",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0.5,
+      "DefaultB": 1,
+      "Identifier": "9",
+      "Position": "720,-84",
+      "HandleOffsets": {},
+      "B": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Saturate",
+      "Identifier": "10",
+      "Position": "912,-84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    }
+  ]
+}

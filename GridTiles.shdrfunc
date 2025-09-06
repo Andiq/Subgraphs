@@ -1,0 +1,279 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/gridtiles.shdrfunc",
+  "Model": null,
+  "Title": "GridPattern",
+  "Description": "",
+  "Category": "Subgraphs",
+  "Icon": "apps",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "926c11be-8666-4db8-8a49-ad698a741769",
+          "Name": "PatternUV",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        },
+        {
+          "Id": "fe06ca2d-e716-4572-b3a9-c07769ceeba2",
+          "Name": "ScaledPatternUV",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        },
+        {
+          "Id": "54569eb3-e179-495f-835e-9261ec87e914",
+          "Name": "RawUV",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        }
+      ],
+      "Identifier": "0",
+      "Position": "852,-24",
+      "HandleOffsets": {},
+      "PatternUV": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "ScaledPatternUV": {
+        "Identifier": "14",
+        "Output": "Out"
+      },
+      "RawUV": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "UV",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "1",
+      "Position": "-684,-156",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "TileU",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 2,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 1,
+      "Identifier": "2",
+      "Position": "-684,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "TileV",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 2,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 2,
+      "Identifier": "3",
+      "Position": "-684,120",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "WidthHeight",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "100,100",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 3,
+      "Identifier": "4",
+      "Position": "-204,372",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "5",
+      "Position": "-444,12",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "6",
+      "Position": "-36,-84",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "1",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "5",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "Frac",
+      "Identifier": "7",
+      "Position": "216,-156",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "8",
+      "Position": "-384,168",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "9",
+      "Position": "-384,240",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "10",
+      "Position": "-204,216",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Saturate",
+      "Identifier": "11",
+      "Position": "36,264",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/aspectratio.shdrfunc",
+      "DefaultValues": {
+        "WidthHeight": "0,0"
+      },
+      "Identifier": "12",
+      "Position": "24,372",
+      "HandleOffsets": {},
+      "WidthHeight": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "13",
+      "Position": "252,288",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "11",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "12",
+        "Output": "RatioWH"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/uvscale.shdrfunc",
+      "DefaultValues": {
+        "PivotPoint": "0.5,0.5",
+        "Scale": "0.5,0.5",
+        "UV": "0,0"
+      },
+      "Identifier": "14",
+      "Position": "528,216",
+      "HandleOffsets": {},
+      "Scale": {
+        "Identifier": "13",
+        "Output": "Result"
+      },
+      "UV": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    }
+  ]
+}

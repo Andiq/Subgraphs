@@ -1,0 +1,198 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/aspectratio.shdrfunc",
+  "Model": null,
+  "Title": "AspectRatio",
+  "Description": "",
+  "Category": "Subgraphs",
+  "Icon": "aspect_ratio",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "6afd073b-8fa4-4fdd-a502-d9a7a2803063",
+          "Name": "RatioWH",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        },
+        {
+          "Id": "20275074-f8be-48ad-b731-9fa18b2952f3",
+          "Name": "Horizontal",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        },
+        {
+          "Id": "27fde5af-ee71-48fb-bf68-9fe16cfa4e09",
+          "Name": "Vertical",
+          "Type": "Vector2",
+          "Preview": "None",
+          "Priority": 0
+        }
+      ],
+      "Identifier": "0",
+      "Position": "720,36",
+      "HandleOffsets": {},
+      "RatioWH": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "Horizontal": {
+        "Identifier": "5",
+        "Output": "XY"
+      },
+      "Vertical": {
+        "Identifier": "6",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "WidthHeight",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "1",
+      "Position": "-672,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SplitVector",
+      "Identifier": "2",
+      "Position": "-408,0",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "3",
+      "Position": "-132,0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "X"
+      },
+      "B": {
+        "Identifier": "2",
+        "Output": "Y"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "4",
+      "Position": "-132,204",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Y"
+      },
+      "B": {
+        "Identifier": "2",
+        "Output": "X"
+      }
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "5",
+      "Position": "60,-12",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "6",
+      "Position": "48,192",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 1,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {
+        "Type": "Default",
+        "Step": 0,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "7",
+      "Position": "-180,96",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Max",
+      "DefaultA": 0,
+      "DefaultB": 0,
+      "Identifier": "8",
+      "Position": "288,-120",
+      "HandleOffsets": {},
+      "InputA": {
+        "Identifier": "5",
+        "Output": "XY"
+      },
+      "InputB": {
+        "Identifier": "6",
+        "Output": "XY"
+      }
+    }
+  ]
+}
