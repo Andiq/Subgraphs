@@ -1,0 +1,288 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/subgraphs/rotateuv.shdrfunc",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": "",
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "9887c3c3-f6e7-434f-991e-bff717887c7a",
+          "Name": "Output",
+          "Type": "Vector4",
+          "Preview": "None",
+          "Priority": 0
+        }
+      ],
+      "Identifier": "0",
+      "Position": "912,36",
+      "HandleOffsets": {},
+      "Output": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "UV",
+      "InputDescription": "UV that will be rotated",
+      "InputType": "Float3",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "1",
+      "Position": "-528,0",
+      "HandleOffsets": {},
+      "PreviewInput": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Rotation Center",
+      "InputDescription": "Default 0.5 (center)",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0.5,0.5",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "2",
+      "Position": "-528,96",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "3",
+      "Position": "-768,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Rotation Amount",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "IsRequired": false,
+      "PortOrder": 0,
+      "Identifier": "4",
+      "Position": "-492,336",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "5",
+      "Position": "-312,24",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "1",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SplitVector",
+      "Identifier": "6",
+      "Position": "-216,24",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "7",
+      "Position": "120,-72",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "6",
+        "Output": "X"
+      },
+      "B": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "8",
+      "Position": "120,12",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "6",
+        "Output": "Y"
+      },
+      "B": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "9",
+      "Position": "120,168",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "6",
+        "Output": "Y"
+      },
+      "B": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "10",
+      "Position": "120,264",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "6",
+        "Output": "X"
+      },
+      "B": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Add",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "11",
+      "Position": "252,-48",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "12",
+      "Position": "252,204",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "9",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CombineVector",
+      "DefaultX": 0,
+      "DefaultY": 0,
+      "DefaultZ": 0,
+      "DefaultW": 0,
+      "Identifier": "13",
+      "Position": "408,60",
+      "HandleOffsets": {},
+      "X": {
+        "Identifier": "11",
+        "Output": "Result"
+      },
+      "Y": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Add",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "14",
+      "Position": "624,60",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "13",
+        "Output": "XY"
+      },
+      "B": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 1,
+      "DefaultB": 1,
+      "Identifier": "15",
+      "Position": "768,36",
+      "HandleOffsets": {},
+      "B": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Cosine",
+      "Identifier": "16",
+      "Position": "-156,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Sine",
+      "Identifier": "17",
+      "Position": "-156,408",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    }
+  ]
+}
